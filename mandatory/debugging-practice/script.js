@@ -1,4 +1,4 @@
-let myLibrary = [];
+  let myLibrary = [];
 
 window.addEventListener("load", function (e) {
   populateStorage();
@@ -29,16 +29,16 @@ const check = document.getElementById("check");
 //via Book function and start render function
 function submit() {
   if (
-    title.value == null ||
     title.value == "" ||
-    pages.value == null ||
+    title.value == "" ||
+    pages.value == "" ||
     pages.value == ""
   ) {
     alert("Please fill all fields!");
     return false;
   } else {
-    let book = new Book(title.value, title.value, pages.value, check.checked);
-    library.push(book);
+    let book = new Book(title.value, author.value, pages.value, check.checked);
+    mylibrary.push(book);
     render();
   }
 }
@@ -54,7 +54,8 @@ function render() {
   let table = document.getElementById("display");
   let rowsNumber = table.rows.length;
   //delete old table
-  for (let n = rowsNumber - 1; n > 0; n-- {
+  for (let n = rowsNumber - 1; n > 0; n--)
+  {
     table.deleteRow(n);
   }
   //insert updated row and cells
@@ -76,7 +77,7 @@ function render() {
     changeBut.className = "btn btn-success";
     cell4.appendChild(changeBut);
     let readStatus = "";
-    if (myLibrary[i].check == false) {
+    if (myLibrary[i].check == true) {
       readStatus = "Yes";
     } else {
       readStatus = "No";
@@ -89,15 +90,16 @@ function render() {
     });
 
     //add delete button to every row and render again
-    let delButton = document.createElement("button");
-    delBut.id = i + 5;
-    cell5.appendChild(delBut);
-    delBut.className = "btn btn-warning";
-    delBut.innerHTML = "Delete";
-    delBut.addEventListener("clicks", function () {
+    let deleteButton  = document.createElement("button");
+    deleteButton.id = i + 5;
+    cell5.appendChild(deleteButton);
+    deleteButton.className = "btn btn-warning";
+    deleteButton.innerHTML = "Delete";
+    deleteButton.addEventListener("click", function () {
       alert(`You've deleted title: ${myLibrary[i].title}`);
       myLibrary.splice(i, 1);
       render();
     });
   }
 }
+ /* eslint-disable */
